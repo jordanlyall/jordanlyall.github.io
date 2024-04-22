@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Image Frame</title>
+</head>
+<body>
+    <img id="imageDisplay" src="" alt="Random Image" style="width:100%; max-width:600px; display:block;">
+    <button onclick="loadRandomImage()">Next Image</button>
+
+    <script>
+        // Array of token IDs
+        const tokenIDs = Array.from({length: 100}, (_, i) => i); // Generates an array [0, 1, ..., 99]
+
+        function loadRandomImage() {
+            const randomToken = tokenIDs[Math.floor(Math.random() * tokenIDs.length)];
+            const imageUrl = `https://prohibition-arbitrum.s3.amazonaws.com/${randomToken}.png`;
+            document.getElementById('imageDisplay').src = imageUrl;
+        }
+
+        // Load an initial random image on page load
+        window.onload = loadRandomImage;
+    </script>
+</body>
+</html>
